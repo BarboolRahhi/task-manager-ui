@@ -1,0 +1,38 @@
+<div class="container-fluid bg-light">
+  <div class="row justify-content-center align-items-center vh-100">
+    <div class="col-md-8 col-xl-4">
+      <div class="col-md-12 bg-white p-4 rounded-2 shadow m-auto">
+        <h3 class="text-center fw-bold">Log in to your Account</h3>
+        <p class="text-center mt-2">
+          Don't have an account?
+          <a routerLink="/register" class="text-primary">Sign up</a>
+        </p>
+        <form>
+          <div class="form-group mt-3">
+            <label for="inputEmail" class="text-secondary">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            />
+          </div>
+          <div class="form-group mt-3">
+            <label for="inputPassword" class="text-secondary">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Password"
+            />
+          </div>
+          <div class="text-primary mt-3 text-end">Forget Password?</div>
+          <button type="submit" class="btn w-100 btn-primary mt-4">
+            Log In
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
