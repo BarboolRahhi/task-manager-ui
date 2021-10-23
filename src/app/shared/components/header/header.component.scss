@@ -1,0 +1,49 @@
+@import "../../../../../node_modules/bootstrap/scss/bootstrap.scss";
+.header {
+  padding: 1rem;
+  height: 60px;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $white;
+
+  .form-control {
+    max-width: 25rem;
+    border-right: 0;
+  }
+
+  .icon {
+    font-size: 1.3rem;
+    color: $secondary;
+  }
+
+  .profile {
+    height: 100%;
+    &-img {
+      width: 36px;
+      height: 36px;
+      object-fit: cover;
+    }
+
+    @include media-breakpoint-down(sm) {
+      &__username {
+        display: none;
+      }
+    }
+  }
+
+  .menu {
+    display: none;
+    @include media-breakpoint-down(sm) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__icon {
+        font-size: 2rem;
+        color: $primary;
+      }
+    }
+  }
+}

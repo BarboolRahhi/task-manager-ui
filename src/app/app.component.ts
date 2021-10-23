@@ -3,8 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'task-manager-ui';
+  isOpen: boolean = false;
+
+  onToggleHandler() {
+    console.log('App');
+    this.isOpen = !this.isOpen;
+  }
 }

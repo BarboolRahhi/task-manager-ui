@@ -1,0 +1,45 @@
+<div [class.open]="isOpen" class="sidebar bg-primary position-fixed">
+  <div class="sidebar__logo">
+    <i class="sidebar__icon bx bxs-analyse"></i>
+    <h4 class="sidebar__name">Manager</h4>
+  </div>
+
+  <div class="siderbar__items d-flex flex-column flex-shrink-0 px-3 pt-4">
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLink="/"
+          class="nav-link text-light d-flex gap-2 align-items-center"
+          aria-current="page"
+        >
+          <i class="bx bxs-dashboard nav-link__icon"></i>
+          Dashbord
+        </a>
+      </li>
+      <li class="nav-item mt-2">
+        <a
+          routerLinkActive="active"
+          routerLink="/project"
+          class="nav-link text-light d-flex gap-2 align-items-center"
+          aria-current="page"
+        >
+          <i class="bx bx-category nav-link__icon"></i>
+          Project
+        </a>
+      </li>
+      <li class="nav-item mt-2">
+        <a
+          routerLinkActive="active"
+          routerLink="/task"
+          class="nav-link sactive text-light d-flex gap-2 align-items-center"
+          aria-current="page"
+        >
+          <i class="bx bx-task nav-link__icon"></i>
+          Task
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
