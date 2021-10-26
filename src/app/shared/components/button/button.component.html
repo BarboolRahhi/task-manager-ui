@@ -1,0 +1,17 @@
+<button
+  [type]="type"
+  [class]="'mt-3 btn ' + 'btn-' + color"
+  [ngClass]="full ? 'w-100' : ''"
+  [disabled]="disabled || (loading | async)"
+  (click)="onClickHandler()"
+>
+  <span
+    *ngIf="loading | async"
+    class="spinner-border spinner-border-sm"
+    role="status"
+    aria-hidden="true"
+  ></span>
+  <ng-container *ngIf="!(loading | async)">
+    <ng-content></ng-content>
+  </ng-container>
+</button>

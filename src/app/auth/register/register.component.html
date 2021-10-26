@@ -1,1 +1,116 @@
-<p>register works!</p>
+<div class="container-fluid bg-light back-image">
+  <div class="row justify-content-center align-items-center vh-100">
+    <div class="col-md-4 col-xl-4">
+      <div class="col-md-4 bg-white p-4 rounded-2 shadow m-auto">
+        <app-logo></app-logo>
+
+        <h4 class="text-center fw-bold">Create your account</h4>
+
+        <p class="text-center mt-2">
+          Have an account?
+          <a routerLink="/login" class="text-primary">Sign in</a>
+        </p>
+
+        <form
+          [formGroup]="registerForm"
+          class="row gap-4"
+          (ngSubmit)="onSubmitHandler()"
+        >
+          <app-form-field label="Username">
+            <input
+              type="text"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': isInvaild('username')
+              }"
+              id="username"
+              formControlName="username"
+            />
+            <div
+              *ngIf="isInvaild('username')"
+              class="invalid-feedback error-size position-absolute"
+            >
+              <div *ngIf="form.username.errors?.required">
+                Username is required
+              </div>
+            </div>
+          </app-form-field>
+
+          <app-form-field label="Email">
+            <input
+              type="email"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': isInvaild('email')
+              }"
+              id="email"
+              formControlName="email"
+            />
+            <div
+              *ngIf="isInvaild('email')"
+              class="invalid-feedback error-size position-absolute"
+            >
+              <div *ngIf="form.email.errors?.required">Email is required</div>
+              <div *ngIf="form.email.errors?.email">Email is invalid</div>
+            </div>
+          </app-form-field>
+
+          <app-form-field label="Password">
+            <input
+              type="password"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': isInvaild('password')
+              }"
+              id="password"
+              formControlName="password"
+            />
+            <div
+              *ngIf="isInvaild('password')"
+              class="invalid-feedback error-size position-absolute"
+            >
+              <div *ngIf="form.password.errors?.required">
+                Password is required
+              </div>
+              <div *ngIf="form.password.errors?.minlength">
+                Password must be at least 8 characters
+              </div>
+            </div>
+          </app-form-field>
+
+          <app-form-field label="Confirm Password">
+            <input
+              type="password"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': isInvaild('confirmPassword')
+              }"
+              id="confirmpassword"
+              formControlName="confirmPassword"
+            />
+            <div
+              *ngIf="isInvaild('confirmPassword')"
+              class="invalid-feedback error-size position-absolute"
+            >
+              <div *ngIf="form.confirmPassword.errors?.required">
+                Confirm Password is required
+              </div>
+              <div *ngIf="form.confirmPassword.errors?.matching">
+                Confirm Password does not match
+              </div>
+            </div>
+          </app-form-field>
+
+          <app-button
+            type="submit"
+            [full]="true"
+            [loading]="isLoading$"
+            [disabled]="registerForm.invalid"
+          >
+            Register
+          </app-button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

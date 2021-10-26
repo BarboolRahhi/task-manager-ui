@@ -1,0 +1,26 @@
+@import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
+
+.back-image {
+  background-image: url(../../../assets/large-triangles.svg);
+}
+
+.sidebar {
+  &__logo {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    color: $primary;
+  }
+
+  &__name {
+    margin-bottom: 0;
+    color: $primary;
+  }
+
+  &__icon {
+    font-size: 2.6rem;
+  }
+}
