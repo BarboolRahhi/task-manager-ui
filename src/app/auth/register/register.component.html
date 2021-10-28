@@ -20,88 +20,73 @@
             <input
               type="text"
               class="form-control"
-              [ngClass]="{
-                'is-invalid': isInvaild('username')
-              }"
+              [ngClass]="invalidClass('username')"
               id="username"
               formControlName="username"
             />
-            <div
-              *ngIf="isInvaild('username')"
-              class="invalid-feedback error-size position-absolute"
-            >
-              <div *ngIf="form.username.errors?.required">
+            <app-field-error [isInvalid]="isInvaild('username')">
+              <ng-container *ngIf="form.username.errors?.required">
                 Username is required
-              </div>
-            </div>
+              </ng-container>
+            </app-field-error>
           </app-form-field>
 
           <app-form-field label="Email">
             <input
               type="email"
               class="form-control"
-              [ngClass]="{
-                'is-invalid': isInvaild('email')
-              }"
+              [ngClass]="invalidClass('email')"
               id="email"
               formControlName="email"
             />
-            <div
-              *ngIf="isInvaild('email')"
-              class="invalid-feedback error-size position-absolute"
-            >
-              <div *ngIf="form.email.errors?.required">Email is required</div>
-              <div *ngIf="form.email.errors?.email">Email is invalid</div>
-            </div>
+            <app-field-error [isInvalid]="isInvaild('email')">
+              <ng-container *ngIf="form.email.errors?.required">
+                Email is required
+              </ng-container>
+              <ng-container *ngIf="form.email.errors?.email">
+                Email is invalid
+              </ng-container>
+            </app-field-error>
           </app-form-field>
 
           <app-form-field label="Password">
             <input
               type="password"
               class="form-control"
-              [ngClass]="{
-                'is-invalid': isInvaild('password')
-              }"
+              [ngClass]="invalidClass('password')"
               id="password"
               formControlName="password"
             />
-            <div
-              *ngIf="isInvaild('password')"
-              class="invalid-feedback error-size position-absolute"
-            >
-              <div *ngIf="form.password.errors?.required">
+            <app-field-error [isInvalid]="isInvaild('password')">
+              <ng-container *ngIf="form.password.errors?.required">
                 Password is required
-              </div>
-              <div *ngIf="form.password.errors?.minlength">
+              </ng-container>
+              <ng-container *ngIf="form.password.errors?.minlength">
                 Password must be at least 8 characters
-              </div>
-            </div>
+              </ng-container>
+            </app-field-error>
           </app-form-field>
 
           <app-form-field label="Confirm Password">
             <input
               type="password"
               class="form-control"
-              [ngClass]="{
-                'is-invalid': isInvaild('confirmPassword')
-              }"
+              [ngClass]="invalidClass('confirmPassword')"
               id="confirmpassword"
               formControlName="confirmPassword"
             />
-            <div
-              *ngIf="isInvaild('confirmPassword')"
-              class="invalid-feedback error-size position-absolute"
-            >
-              <div *ngIf="form.confirmPassword.errors?.required">
+            <app-field-error [isInvalid]="isInvaild('confirmPassword')">
+              <ng-container *ngIf="form.confirmPassword.errors?.required">
                 Confirm Password is required
-              </div>
-              <div *ngIf="form.confirmPassword.errors?.matching">
+              </ng-container>
+              <ng-container *ngIf="form.confirmPassword.errors?.matching">
                 Confirm Password does not match
-              </div>
-            </div>
+              </ng-container>
+            </app-field-error>
           </app-form-field>
 
           <app-button
+            class="mt-2"
             type="submit"
             [full]="true"
             [loading]="isLoading$"

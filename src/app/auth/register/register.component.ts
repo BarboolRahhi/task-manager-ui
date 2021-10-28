@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map, startWith } from 'rxjs/operators';
 import { AppState } from 'src/app/core/models/app-state';
@@ -21,12 +22,15 @@ import Validation from 'src/app/shared/Utils/validation';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  appState$!: Observable<AppState<MessageResponse>>;
   private loadingSubject = new BehaviorSubject<boolean>(false);
   isLoading$ = this.loadingSubject.asObservable();
   registerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private toastr: ToastrService
+  ) {
     this.initRegisterForm();
   }
 
@@ -46,11 +50,6 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.controls;
   }
 
-  isInvaild(controlName: string): boolean {
-    const control = this.registerForm.controls[controlName] as FormControl;
-    return control.errors !== null && control.touched;
-  }
-
   ngOnInit(): void {}
 
   onSubmitHandler() {
@@ -60,9 +59,14 @@ export class RegisterComponent implements OnInit {
       .register$({ ...this.registerForm.value } as SignupRequest)
       .subscribe(
         (response) => {
+          this.toastr.success(response.message);
+          this.registerForm.reset();
           this.loadingSubject.next(false);
         },
-        (error) => this.loadingSubject.next(false)
+        (error) => {
+          this.toastr.error(error.message);
+          this.loadingSubject.next(false);
+        }
       );
 
     // .pipe(
@@ -74,5 +78,16 @@ export class RegisterComponent implements OnInit {
     //     return of({ dataState: DataState.ERROR_STATE });
     //   })
     // );
+  }
+
+  isInvaild(controlName: string): boolean {
+    const control = this.registerForm.controls[controlName] as FormControl;
+    return control.errors !== null && control.dirty;
+  }
+
+  invalidClass(controlName: string) {
+    return {
+      'is-invalid': this.isInvaild(controlName),
+    };
   }
 }

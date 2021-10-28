@@ -8,30 +8,57 @@
           Don't have an account?
           <a routerLink="/register" class="text-primary">Sign up</a>
         </p>
-        <form>
-          <div class="form-group mt-3">
-            <label for="inputEmail" class="text-secondary">Email address</label>
+
+        <form
+          [formGroup]="loginForm"
+          class="row gap-4"
+          (ngSubmit)="onSubmitHandler()"
+        >
+          <app-form-field label="Email">
             <input
               type="email"
               class="form-control"
+              [ngClass]="invalidClass('email')"
               id="email"
-              aria-describedby="emailHelp"
-              placeholder="Enter email"
+              formControlName="email"
             />
-          </div>
-          <div class="form-group mt-3">
-            <label for="inputPassword" class="text-secondary">Password</label>
+            <app-field-error [isInvalid]="isInvaild('email')">
+              <ng-container *ngIf="form.email.errors?.required">
+                Email is required
+              </ng-container>
+              <ng-container *ngIf="form.email.errors?.email">
+                Email is invalid
+              </ng-container>
+            </app-field-error>
+          </app-form-field>
+
+          <app-form-field label="Password">
             <input
               type="password"
               class="form-control"
+              [ngClass]="invalidClass('password')"
               id="password"
-              placeholder="Password"
+              formControlName="password"
             />
-          </div>
-          <div class="text-primary mt-3 text-end">Forget Password?</div>
-          <button type="submit" class="btn w-100 btn-primary mt-4">
-            Log In
-          </button>
+            <app-field-error [isInvalid]="isInvaild('password')">
+              <ng-container *ngIf="form.password.errors?.required">
+                Password is required
+              </ng-container>
+              <ng-container *ngIf="form.password.errors?.minlength">
+                Password must be at least 8 characters
+              </ng-container>
+            </app-field-error>
+          </app-form-field>
+
+          <div class="text-primary text-end">Forget Password?</div>
+          <app-button
+            type="submit"
+            [full]="true"
+            [loading]="isLoading$"
+            [disabled]="loginForm.invalid"
+          >
+            Log in
+          </app-button>
         </form>
       </div>
     </div>

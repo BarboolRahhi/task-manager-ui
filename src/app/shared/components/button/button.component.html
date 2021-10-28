@@ -1,6 +1,6 @@
 <button
   [type]="type"
-  [class]="'mt-3 btn ' + 'btn-' + color"
+  [class]="'btn ' + 'btn-' + color"
   [ngClass]="full ? 'w-100' : ''"
   [disabled]="disabled || (loading | async)"
   (click)="onClickHandler()"

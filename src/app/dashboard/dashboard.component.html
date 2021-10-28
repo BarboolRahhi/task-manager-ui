@@ -1,0 +1,9 @@
+<div class="body">
+  <app-sidebar [isOpen]="isOpen"></app-sidebar>
+  <div class="content">
+    <app-header (onToggle)="onToggleHandler()"></app-header>
+    <main class="main">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
