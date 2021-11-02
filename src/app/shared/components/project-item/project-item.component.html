@@ -1,0 +1,78 @@
+<!-- project card -->
+<div class="card d-block card-shadow bg-white border-0 rounded-3">
+  <div class="card-body">
+    <!-- project title-->
+
+    <div class="dropdown card-widgets" style="float: right">
+      <a
+        class="dropdown-toggle arrow-none text-secondary"
+        [class.show]="isShow$ | async"
+        data-bs-toggle="dropdown"
+        aria-expanded="true"
+        (click)="onMenuClick()"
+      >
+        <i class="bx bx-dots-horizontal-rounded"></i>
+      </a>
+      <div
+        class="dropdown-menu dropdown-menu-end border-0 shadow-lg"
+        [class.show]="isShow$ | async"
+        [class.custome_drowdown_menu]="isShow$ | async"
+        data-popper-placement="bottom-end"
+      >
+        <a
+          class="dropdown-item text-secondary"
+          (click)="onMenuItemClick.emit(MENU_ITEM.EDIT)"
+        >
+          <i class="bx bx-edit-alt me-2"></i>Edit
+        </a>
+
+        <a
+          class="dropdown-item text-secondary"
+          (click)="onMenuItemClick.emit(MENU_ITEM.DELETE)"
+        >
+          <i class="bx bxs-trash me-2"></i>Delete
+        </a>
+      </div>
+    </div>
+
+    <h5 class="mt-0 text-secondary text-title cursor-pointer">
+      <a (click)="onClick.emit()">{{ project.name }}</a>
+    </h5>
+
+    <div
+      class="badge bg-success mb-3"
+      [ngClass]="project.isCompleted ? 'bg-success' : 'bg-info'"
+      style="font-size: 0.7rem"
+    >
+      {{ project.isCompleted ? "Finished" : "Ongoing" }}
+    </div>
+
+    <p class="text-muted mb-3">{{ project.description | slice: 0:100 }}...</p>
+
+    <!-- project detail-->
+    <div class="d-flex justify-content-start align-items-center icon">
+      <i class="bx bx-list-ul" style="font-size: 1.3rem"></i>
+      <strong class="mx-1">21 </strong>Tasks
+    </div>
+
+    <div class="mt-2">
+      <!-- project progress-->
+      <p class="mb-2 fw-bold text-secondary" style="font-size: 0.8rem">
+        Progress <span class="float-end">100%</span>
+      </p>
+      <div class="progress progress-sm" style="height: 6px">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          aria-valuenow="100"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="width: 100%"
+        ></div>
+        <!-- /.progress-bar -->
+      </div>
+      <!-- /.progress -->
+    </div>
+  </div>
+</div>
+<!-- end card-->

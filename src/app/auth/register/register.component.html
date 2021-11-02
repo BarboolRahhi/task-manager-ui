@@ -1,10 +1,10 @@
 <div class="container-fluid bg-light back-image">
-  <div class="row justify-content-center align-items-center vh-100">
-    <div class="col-md-4 col-xl-4">
-      <div class="col-md-4 bg-white p-4 rounded-2 shadow m-auto">
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="col-md-6 col-xl-4 col-xxl-4">
+      <div class="bg-white p-4 rounded-2 shadow m-auto">
         <app-logo></app-logo>
 
-        <h4 class="text-center fw-bold">Create your account</h4>
+        <h4 class="text-center text-secondary fw-bold">Create your account</h4>
 
         <p class="text-center mt-2">
           Have an account?
@@ -13,13 +13,12 @@
 
         <form
           [formGroup]="registerForm"
-          class="row gap-4"
+          class="row gap-4 p-2"
           (ngSubmit)="onSubmitHandler()"
         >
           <app-form-field label="Username">
             <input
               type="text"
-              class="form-control"
               [ngClass]="invalidClass('username')"
               id="username"
               formControlName="username"
@@ -34,7 +33,6 @@
           <app-form-field label="Email">
             <input
               type="email"
-              class="form-control"
               [ngClass]="invalidClass('email')"
               id="email"
               formControlName="email"
@@ -52,7 +50,6 @@
           <app-form-field label="Password">
             <input
               type="password"
-              class="form-control"
               [ngClass]="invalidClass('password')"
               id="password"
               formControlName="password"
@@ -70,7 +67,6 @@
           <app-form-field label="Confirm Password">
             <input
               type="password"
-              class="form-control"
               [ngClass]="invalidClass('confirmPassword')"
               id="confirmpassword"
               formControlName="confirmPassword"

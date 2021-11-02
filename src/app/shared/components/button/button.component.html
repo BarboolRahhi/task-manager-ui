@@ -1,6 +1,6 @@
 <button
   [type]="type"
-  [class]="'btn ' + 'btn-' + color"
+  [class]="'btn ' + 'btn-' + color + ' shadow-' + color"
   [ngClass]="full ? 'w-100' : ''"
   [disabled]="disabled || (loading | async)"
   (click)="onClickHandler()"
@@ -11,7 +11,10 @@
     role="status"
     aria-hidden="true"
   ></span>
-  <ng-container *ngIf="!(loading | async)">
-    <ng-content></ng-content>
-  </ng-container>
+  <span class="visually-hidden">Loading...</span>
+  <div class="d-flex justify-content-center align-items-center">
+    <ng-container *ngIf="!(loading | async)">
+      <ng-content></ng-content>
+    </ng-container>
+  </div>
 </button>

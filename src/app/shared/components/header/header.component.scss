@@ -10,7 +10,13 @@
 
   .form-control {
     max-width: 25rem;
-    border-right: 0;
+    border: 0;
+    background-color: #f1f3fa;
+  }
+
+  .input-group-text {
+    border: 0;
+    background-color: #f1f3fa !important;
   }
 
   .icon {
@@ -46,4 +52,10 @@
       }
     }
   }
+}
+
+.form-control:focus {
+  border: 0;
+  box-shadow: none;
+  outline: none;
 }

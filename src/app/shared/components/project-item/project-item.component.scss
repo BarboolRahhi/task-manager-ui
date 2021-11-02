@@ -1,0 +1,61 @@
+.text-muted {
+  color: #98a6ad;
+  font-size: 0.8rem;
+}
+
+.shadow-primary {
+  box-shadow: 0 2px 6px 0 rgb(0 82 204 / 50%);
+}
+
+.shadow-secondary {
+  box-shadow: 0 2px 6px 0 rgb(37 56 88 / 50%);
+}
+
+.card-shadow {
+  box-shadow: 0 0 35px 0 rgb(154 161 171 / 15%);
+}
+
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.text-title {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.icon {
+  font-size: 0.9rem;
+  color: #8d9497;
+}
+
+.dropdown-toggle {
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.dropdown-item {
+  cursor: pointer;
+  &:active {
+    background-color: whitesmoke;
+  }
+}
+
+.arrow-none:after {
+  display: none;
+}
+
+.custome_drowdown_menu {
+  position: absolute;
+  inset: 0px auto auto 0px;
+  margin: 0px;
+  transform: translate3d(-142px, 22px, 0px);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

@@ -1,4 +1,5 @@
 <div class="form-group position-relative">
-  <span *ngIf="label !== ''" class="text-secondary">{{ label }}</span>
+  <span *ngIf="label !== ''" class="text-secondary label">{{ label }}</span>
+  <span *ngIf="optional" class="text-danger ms-1">*</span>
   <ng-content></ng-content>
 </div>

@@ -8,6 +8,7 @@ import { FormFieldComponent } from './components/form-field/form-field.component
 import { ButtonComponent } from './components/button/button.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FieldErrorComponent } from './components/field-error/field-error.component';
+import { ProjectItemComponent } from './components/project-item/project-item.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FieldErrorComponent } from './components/field-error/field-error.compon
     FormFieldComponent,
     ButtonComponent,
     FieldErrorComponent,
+    ProjectItemComponent,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
   exports: [
@@ -25,6 +27,7 @@ import { FieldErrorComponent } from './components/field-error/field-error.compon
     LogoComponent,
     FormFieldComponent,
     ButtonComponent,
+    ProjectItemComponent,
     FieldErrorComponent,
     ReactiveFormsModule,
   ],

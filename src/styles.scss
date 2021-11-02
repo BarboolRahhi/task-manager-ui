@@ -1,15 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
 $primary: #0052cc;
 $secondary: #253858;
-$light: #f7f9fc;
+$light: #e9ecf1;
 $success: #57d9a3;
 $danger: #de350b;
 $info: #84b3fa;
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   font-family: "Montserrat", sans-serif;
   padding: 0;
   margin: 0;
   min-height: 100vh;
+  width: 100%;
 }
