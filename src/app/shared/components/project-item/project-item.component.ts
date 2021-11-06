@@ -1,10 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DoCheck,
+  ElementRef,
   EventEmitter,
   Input,
   OnInit,
   Output,
+  ViewChild,
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Project } from 'src/app/core/models/project';
@@ -17,16 +20,10 @@ import { MenuItem } from '../../Utils/menu-item';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectItemComponent implements OnInit {
-  isShowSubject = new BehaviorSubject<boolean>(false);
-  isShow$ = this.isShowSubject.asObservable();
-
   readonly MENU_ITEM = MenuItem;
 
   @Input()
-  project: Project = {
-    name: 'Hello',
-    description: 'jk',
-  };
+  project!: Project;
 
   @Output()
   onMenuItemClick: EventEmitter<MenuItem> = new EventEmitter();
@@ -37,8 +34,4 @@ export class ProjectItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
-  onMenuClick() {
-    this.isShowSubject.next(!this.isShowSubject.value);
-  }
 }

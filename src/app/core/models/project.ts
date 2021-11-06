@@ -5,4 +5,6 @@ export interface Project {
   startDate?: Date;
   dueDate?: Date;
   isCompleted?: boolean;
+  totalTask?: number;
+  progress?: number;
 }
