@@ -22,10 +22,24 @@
       justify-content-md-end justify-content-center
     "
   >
-    <app-button color="primary">All</app-button>
+    <app-button #all color="primary" (click)="onAllHandler()">All</app-button>
     <div class="btn-group ms-2" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-light">Ongoing</button>
-      <button type="button" class="btn btn-light">Finished</button>
+      <button
+        #ongoing
+        type="button"
+        class="btn btn-light"
+        (click)="onOngoingHandler()"
+      >
+        Ongoing
+      </button>
+      <button
+        #finished
+        type="button"
+        class="btn btn-light"
+        (click)="onFinishedHandler()"
+      >
+        Finished
+      </button>
     </div>
   </div>
 </div>
@@ -43,6 +57,7 @@
       <app-project-item
         [project]="project"
         (onClick)="onItemClick()"
+        (onMenuItemClick)="onMenuItemClick($event, project)"
       ></app-project-item>
     </div>
   </ng-container>
@@ -54,20 +69,22 @@
   id="exampleModal"
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
+  aria-modal="true"
   data-bs-backdrop="static"
   data-bs-keyboard="false"
 >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create a new Project</h5>
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ (isEditing$ | async) ? "Update Project" : "Create a new Project" }}
+        </h5>
       </div>
       <div class="modal-body">
         <form
           [formGroup]="projectForm"
           (ngSubmit)="onSubmitHandle()"
-          class="row gap-3"
+          class="row gap-3 p-1"
         >
           <app-form-field label="Project name">
             <input type="text" id="name" formControlName="name" />
@@ -95,8 +112,27 @@
               formControlName="dueDate"
             />
           </app-form-field>
-          <div class="modal-footer">
-            <app-button type="button" color="secondary" data-bs-dismiss="modal">
+
+          <div class="form-check">
+            <input
+              formControlName="isCompleted"
+              class="form-check-input"
+              type="checkbox"
+              id="flexCheckChecked"
+            />
+            <label class="form-check-label" for="flexCheckChecked">
+              Mark as finished
+            </label>
+          </div>
+
+          <div class="modal-footer pb-0">
+            <app-button
+              type="button"
+              color="secondary"
+              id="closeModal"
+              data-bs-dismiss="modal"
+              (onClick)="onCloseModal()"
+            >
               Close
             </app-button>
             <app-button
@@ -104,7 +140,7 @@
               [disabled]="projectForm.invalid"
               [loading]="isSaving$"
             >
-              Save
+              {{ (isEditing$ | async) ? "Update" : "Save" }}
             </app-button>
           </div>
         </form>

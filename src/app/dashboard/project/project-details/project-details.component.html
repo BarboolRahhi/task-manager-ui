@@ -1,1 +1,101 @@
-<p>project-details works!</p>
+<div class="row mt-2">
+  <div class="col-sm-6">
+    <h5 class="text-secondary">Project Details</h5>
+  </div>
+  <div class="col-md-6 d-flex justify-content-end subtitle-font-size">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a class="text-decoration-none text-primary" routerLink="/">Board</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a class="text-decoration-none text-primary" routerLink="/project"
+            >Projects</a
+          >
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          Project Details
+        </li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-md-8">
+    <div class="card d-block card-shadow bg-white border-0 rounded-3 p-2">
+      <div class="card-body">
+        <!-- project action menu -->
+        <div class="dropdown card-widgets" style="float: right">
+          <a
+            class="dropdown-toggle arrow-none text-secondary"
+            data-bs-toggle="dropdown"
+            aria-expanded="true"
+          >
+            <i class="bx bx-dots-horizontal-rounded"></i>
+          </a>
+          <div
+            class="dropdown-menu dropdown-menu-end border-0 shadow-lg"
+            data-popper-placement="bottom-end"
+            aria-labelledby="dropdownMenuButton1"
+          >
+            <a
+              class="dropdown-item text-secondary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              <i class="bx bx-edit-alt me-2"></i>Edit
+            </a>
+
+            <a class="dropdown-item text-secondary">
+              <i class="bx bxs-trash me-2"></i>Delete
+            </a>
+          </div>
+        </div>
+
+        <!-- project title-->
+        <h5 class="mt-0 text-secondary text-title cursor-pointer">
+          <a>{{ project.name }}</a>
+        </h5>
+
+        <div
+          class="badge bg-success mb-3"
+          [ngClass]="project.isCompleted ? 'bg-success' : 'bg-info'"
+          style="font-size: 0.7rem"
+        >
+          {{ project.isCompleted ? "Finished" : "Ongoing" }}
+        </div>
+
+        <h6 class="text-secondary fw-bold mt-3">Project Overview</h6>
+        <p class="text-muted mb-3 mt-2">{{ project.description }}</p>
+
+        <!-- project detail-->
+        <div class="row">
+          <div class="col-md-3">
+            <h6 class="text-secondary fw-bold mt-3 title-font-size">
+              Start Date
+            </h6>
+            <p class="text-secondary mt-1 subtitle-font-size">17 March 2021</p>
+          </div>
+          <div class="col-md-3">
+            <h6 class="text-secondary fw-bold mt-3 title-font-size">
+              Due Date
+            </h6>
+            <p class="text-secondary mt-1 subtitle-font-size">05 April 2021</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card-shadow bg-white rounded-3 p-4">
+      <h6 class="text-secondary fw-bold title-font-size">Progress</h6>
+      <canvas
+        baseChart
+        [data]="doughnutChartData"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType"
+      ></canvas>
+    </div>
+  </div>
+</div>
