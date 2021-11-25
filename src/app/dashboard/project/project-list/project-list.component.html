@@ -56,7 +56,7 @@
     <div class="col-lg-6 col-xxl-3">
       <app-project-item
         [project]="project"
-        (onClick)="onItemClick()"
+        (onClick)="onItemClick(project.id)"
         (onMenuItemClick)="onMenuItemClick($event, project)"
       ></app-project-item>
     </div>

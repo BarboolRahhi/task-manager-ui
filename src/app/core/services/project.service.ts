@@ -31,6 +31,10 @@ export class ProjectService {
 
   constructor(private http: HttpClient) {}
 
+  get projectStore() {
+    return this.projectSubject.value;
+  }
+
   dispatchAction(
     data: Project | Project[],
     action: ProjectAction

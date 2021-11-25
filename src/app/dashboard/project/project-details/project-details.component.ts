@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from 'src/app/core/models/project';
 import { ChartType } from 'chart.js';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ProjectService } from 'src/app/core/services/project.service';
 
 @Component({
   selector: 'app-project-details',
@@ -8,18 +11,23 @@ import { ChartType } from 'chart.js';
   styleUrls: ['./project-details.component.scss'],
 })
 export class ProjectDetailsComponent implements OnInit {
-  project: Project = {
-    name: 'App Development',
-    description:
-      'With supporting text below as a natural lead-in to additional contenposuere erat a ante. Voluptates, illo, iste itaque voluptas corrupti ratione reprehenderit magni similique? Tempore, quos delectus asperiores libero voluptas quod perferendis! Voluptate, quod illo rerum? Lorem ipsum dolor sit amet.',
-    isCompleted: true,
-    startDate: new Date(),
-  };
-
+  $project!: Observable<Project>;
+  project!: Project | undefined;
   public doughnutChartLabels = ['Todo', 'In Progress', 'Done'];
   public doughnutChartData = [80, 83, 94];
   public doughnutChartType: ChartType = 'doughnut';
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private projectService: ProjectService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      console.log(params['id']);
+
+      this.project = this.projectService.projectStore.appData?.filter(
+        (project) => project.id === +params['id']
+      )[0];
+    });
+  }
 }

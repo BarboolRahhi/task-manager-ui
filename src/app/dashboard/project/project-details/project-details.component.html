@@ -55,19 +55,19 @@
 
         <!-- project title-->
         <h5 class="mt-0 text-secondary text-title cursor-pointer">
-          <a>{{ project.name }}</a>
+          <a>{{ project?.name }}</a>
         </h5>
 
         <div
           class="badge bg-success mb-3"
-          [ngClass]="project.isCompleted ? 'bg-success' : 'bg-info'"
+          [ngClass]="project?.isCompleted ? 'bg-success' : 'bg-info'"
           style="font-size: 0.7rem"
         >
-          {{ project.isCompleted ? "Finished" : "Ongoing" }}
+          {{ project?.isCompleted ? "Finished" : "Ongoing" }}
         </div>
 
         <h6 class="text-secondary fw-bold mt-3">Project Overview</h6>
-        <p class="text-muted mb-3 mt-2">{{ project.description }}</p>
+        <p class="text-muted mb-3 mt-2">{{ project?.description }}</p>
 
         <!-- project detail-->
         <div class="row">
@@ -75,13 +75,17 @@
             <h6 class="text-secondary fw-bold mt-3 title-font-size">
               Start Date
             </h6>
-            <p class="text-secondary mt-1 subtitle-font-size">17 March 2021</p>
+            <p class="text-secondary mt-1 subtitle-font-size">
+              {{ project?.startDate | date: "MMM d, y" }}
+            </p>
           </div>
           <div class="col-md-3">
             <h6 class="text-secondary fw-bold mt-3 title-font-size">
               Due Date
             </h6>
-            <p class="text-secondary mt-1 subtitle-font-size">05 April 2021</p>
+            <p class="text-secondary mt-1 subtitle-font-size">
+              {{ project?.dueDate | date: "MMM d, y" }}
+            </p>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -32,7 +33,8 @@ export class ProjectListComponent implements OnInit {
   constructor(
     private projectService: ProjectService,
     private fb: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.projectForm = this.fb.group({
       id: [''],
@@ -95,8 +97,8 @@ export class ProjectListComponent implements OnInit {
     this.projectForm.reset();
   }
 
-  onItemClick() {
-    console.log('OnItemClick');
+  onItemClick(id?: number) {
+    this.router.navigate(['project', id]);
   }
 
   onMenuItemClick(action: MenuItem, project: Project) {
