@@ -82,10 +82,9 @@
           </app-form-field>
 
           <app-button
-            class="mt-2"
+            class="full mt-2"
             type="submit"
-            [full]="true"
-            [loading]="isLoading$"
+            [loading]="isLoading$ | async"
             [disabled]="registerForm.invalid"
           >
             Register

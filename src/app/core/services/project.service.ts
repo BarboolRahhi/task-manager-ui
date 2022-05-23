@@ -78,8 +78,7 @@ export class ProjectService {
 
     projects[id] = {
       ...project,
-      progress: projects[id].progress,
-      totalTask: projects[id].totalTask,
+      taskDetails: projects[id].taskDetails,
     };
 
     this.projectSubject.next({
@@ -108,7 +107,7 @@ export class ProjectService {
     return this.projectSubject.value;
   }
 
-  fetchProjects$ = this.http.get<Project[]>(this.BASE_URL);
+  fetchProjects$ = () => this.http.get<Project[]>(this.BASE_URL);
 
   saveProject$ = (project: Project) =>
     this.http.post<Project>(this.BASE_URL, project);

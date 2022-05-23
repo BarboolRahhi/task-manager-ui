@@ -55,8 +55,8 @@
           <div class="text-primary text-end">Forget Password?</div>
           <app-button
             type="submit"
-            [full]="true"
-            [loading]="isLoading$"
+            class="full"
+            [loading]="isLoading$ | async"
             [disabled]="loginForm.invalid"
           >
             Log in

@@ -1,13 +1,13 @@
 import {
   Component,
   EventEmitter,
-  HostBinding,
   Input,
   OnInit,
   Output,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { Observable } from 'rxjs';
+
+type ButtonType = 'button' | 'submit';
 
 @Component({
   selector: 'app-button',
@@ -17,14 +17,10 @@ import { Observable } from 'rxjs';
 })
 export class ButtonComponent implements OnInit {
   @Input()
-  type: string = 'button';
+  type: ButtonType = 'button';
 
   @Input()
-  loading!: Observable<boolean>;
-
-  @HostBinding('class.w-100')
-  @Input()
-  full: boolean = false;
+  loading: boolean | null = false;
 
   @Input()
   color: string = 'primary';

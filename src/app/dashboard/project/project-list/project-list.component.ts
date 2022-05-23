@@ -1,9 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { map, startWith, catchError } from 'rxjs/operators';
 import { AppState } from 'src/app/core/models/app-state';
 import { DataState } from 'src/app/core/models/data-state';
 import { Project } from 'src/app/core/models/project';
@@ -47,12 +48,16 @@ export class ProjectListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.appData$ = this.projectService.fetchProjects$.pipe(
+    this.appData$ = this.projectService.fetchProjects$().pipe(
       map((response) =>
         this.projectService.dispatchAction(response, ProjectAction.FETCH)
       ),
       startWith({
         dataState: DataState.LOADING_STATE,
+      }),
+      catchError((error: HttpErrorResponse) => {
+        this.router.navigateByUrl('/login');
+        return of({} as AppState<Project[]>);
       })
     );
   }

@@ -51,23 +51,24 @@
     <!-- project detail-->
     <div class="d-flex justify-content-start align-items-center icon">
       <i class="bx bx-list-ul" style="font-size: 1.3rem"></i>
-      <strong class="mx-1">{{ project.totalTask }}</strong
+      <strong class="mx-1">{{ project.taskDetails.totalTask }}</strong
       >Tasks
     </div>
 
     <div class="mt-2">
       <!-- project progress-->
       <p class="mb-2 fw-bold text-secondary" style="font-size: 0.8rem">
-        Progress <span class="float-end">{{ project.progress }}%</span>
+        Progress
+        <span class="float-end">{{ project.taskDetails.progress }}%</span>
       </p>
       <div class="progress progress-sm" style="height: 6px">
         <div
           class="progress-bar"
           role="progressbar"
-          [attr.aria-valuenow]="project.progress"
+          [attr.aria-valuenow]="project.taskDetails.progress"
           aria-valuemin="0"
           aria-valuemax="100"
-          [ngStyle]="{ width: project.progress + '%' }"
+          [ngStyle]="{ width: project.taskDetails.progress + '%' }"
         ></div>
         <!-- /.progress-bar -->
       </div>

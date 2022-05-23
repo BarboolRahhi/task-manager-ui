@@ -14,8 +14,14 @@ export class ProjectDetailsComponent implements OnInit {
   $project!: Observable<Project>;
   project!: Project | undefined;
   public doughnutChartLabels = ['Todo', 'In Progress', 'Done'];
-  public doughnutChartData = [80, 83, 94];
+  public doughnutChartData: number[] = [0, 0, 0];
   public doughnutChartType: ChartType = 'doughnut';
+
+  public pieChartColors: Array<any> = [
+    {
+      backgroundColor: ['#0052cc', '#84b3fa', '#57d9a3'],
+    },
+  ];
   constructor(
     private route: ActivatedRoute,
     private projectService: ProjectService
@@ -28,6 +34,14 @@ export class ProjectDetailsComponent implements OnInit {
       this.project = this.projectService.projectStore.appData?.filter(
         (project) => project.id === +params['id']
       )[0];
+
+      const taskdetails = this.project?.taskDetails;
+
+      this.doughnutChartData = [
+        taskdetails?.countOfTodo ?? 0,
+        taskdetails?.countOfInProgress ?? 0,
+        taskdetails?.countOfDone ?? 0,
+      ];
     });
   }
 }

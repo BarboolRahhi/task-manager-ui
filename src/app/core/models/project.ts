@@ -1,3 +1,5 @@
+import { TaskDetails } from './tast-details';
+
 export interface Project {
   id?: number;
   name: string;
@@ -5,6 +7,5 @@ export interface Project {
   startDate?: Date;
   dueDate?: Date;
   isCompleted?: boolean;
-  totalTask?: number;
-  progress?: number;
+  taskDetails: TaskDetails;
 }

@@ -16,7 +16,10 @@ export class FormFieldComponent implements OnInit {
   label: string = '';
 
   @Input()
-  optional: boolean = false;
+  required: boolean = false;
+
+  @Input()
+  lableFor: string = '';
 
   constructor() {}
 
