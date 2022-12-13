@@ -1,6 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, of } from 'rxjs';
@@ -56,7 +60,7 @@ export class ProjectListComponent implements OnInit {
         dataState: DataState.LOADING_STATE,
       }),
       catchError((error: HttpErrorResponse) => {
-        this.router.navigateByUrl('/login');
+        //this.router.navigateByUrl('/login');
         return of({} as AppState<Project[]>);
       })
     );
