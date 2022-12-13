@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -18,10 +18,10 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class LoginComponent implements OnInit {
   private loadingSubject = new BehaviorSubject<boolean>(false);
   isLoading$ = this.loadingSubject.asObservable();
-  loginForm!: FormGroup;
+  loginForm!: UntypedFormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private authService: AuthService,
     private toastr: ToastrService
   ) {
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
   }
 
   isInvaild(controlName: string): boolean {
-    const control = this.loginForm.controls[controlName] as FormControl;
+    const control = this.loginForm.controls[controlName] as UntypedFormControl;
     return control.errors !== null && control.dirty;
   }
 

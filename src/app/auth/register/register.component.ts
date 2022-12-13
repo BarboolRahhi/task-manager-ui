@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -24,10 +24,10 @@ import Validation from 'src/app/shared/Utils/validation';
 export class RegisterComponent implements OnInit {
   private loadingSubject = new BehaviorSubject<boolean>(false);
   isLoading$ = this.loadingSubject.asObservable();
-  registerForm!: FormGroup;
+  registerForm!: UntypedFormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private authService: AuthService,
     private toastr: ToastrService
   ) {
@@ -81,7 +81,7 @@ export class RegisterComponent implements OnInit {
   }
 
   isInvaild(controlName: string): boolean {
-    const control = this.registerForm.controls[controlName] as FormControl;
+    const control = this.registerForm.controls[controlName] as UntypedFormControl;
     return control.errors !== null && control.dirty;
   }
 

@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, of } from 'rxjs';
@@ -29,11 +29,11 @@ export class ProjectListComponent implements OnInit {
   private savingSubject = new BehaviorSubject<boolean>(false);
   isSaving$ = this.savingSubject.asObservable();
 
-  projectForm: FormGroup;
+  projectForm: UntypedFormGroup;
 
   constructor(
     private projectService: ProjectService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private toastr: ToastrService,
     private router: Router
   ) {
