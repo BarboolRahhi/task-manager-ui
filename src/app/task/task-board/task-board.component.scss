@@ -1,0 +1,33 @@
+.board {
+    display: flex;
+    white-space: nowrap;
+    overflow-x: auto;
+    gap: 1.25rem;
+}
+
+.tasks {
+    --ct-gray-200: #eef2f7;
+    width: 22rem;
+    padding: 0 1rem 1rem 1rem;
+    border: 1px solid var(--ct-gray-200);
+    vertical-align: top;
+    margin-bottom: 1.5rem;
+    border-radius: 0.25rem;
+    
+
+    &__header {
+        background-color: var(--ct-gray-100);
+        padding: 1rem;
+        margin: 0 -1rem;
+    }
+
+    &__list-items {
+        min-height: 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+       
+    }
+
+
+}

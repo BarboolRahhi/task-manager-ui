@@ -4,6 +4,7 @@ import { ChartType } from 'chart.js';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ProjectService } from 'src/app/core/services/project.service';
+import { BreadcrumbItem } from 'src/app/shared/components/breadcrumb-navbar/breadcrumb-item';
 
 @Component({
   selector: 'app-project-details',
@@ -11,6 +12,23 @@ import { ProjectService } from 'src/app/core/services/project.service';
   styleUrls: ['./project-details.component.scss'],
 })
 export class ProjectDetailsComponent implements OnInit {
+  readonly breadcrumbItems: BreadcrumbItem[] = [
+    {
+      name: 'Board',
+      link: '/',
+      isActive: true,
+    },
+    {
+      name: 'Projects',
+      link: '/project',
+      isActive: true,
+    },
+    {
+      name: 'Project Details',
+      isActive: false,
+    },
+  ];
+
   $project!: Observable<Project>;
   project!: Project | undefined;
   public doughnutChartLabels = ['Todo', 'In Progress', 'Done'];

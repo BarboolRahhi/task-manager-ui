@@ -1,0 +1,77 @@
+<rb-breadcrumb-navbar
+  title="Tasks"
+  [breadcrumbItems]="breadcrumbItems"
+></rb-breadcrumb-navbar>
+
+<div class="row">
+  <div class="col-12">
+    <div class="board">
+      <!-- TODO -->
+
+      <div class="tasks">
+        <h5 class="tasks__header text-title">TODO (3)</h5>
+        <ng-container *ngFor="let a of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+          <div class="tasks__list-items">
+            <div class="card">
+              <div class="card-body p-3">
+                <small class="float-end text-muted">18 Jul 2018</small>
+                <span class="badge bg-danger">High</span>
+
+                <h5 class="mt-2 mb-2 text-secondary text-title cursor-pointer">
+                  <a>iOS App home page</a>
+                </h5>
+
+                <!-- end card-body -->
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- In Progress -->
+      <div class="tasks">
+        <h5 class="tasks__header text-title">In Progress (3)</h5>
+        <div class="tasks__list-items">
+          <div class="card">
+            <div class="card-body p-3">
+              <small class="float-end text-muted">18 Jul 2018</small>
+              <span class="badge bg-danger">High</span>
+
+              <h5 class="mt-2 mb-2 text-secondary text-title cursor-pointer">
+                <a>iOS App home page</a>
+              </h5>
+
+              <!-- end card-body -->
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body p-3">
+              <small class="float-end text-muted">18 Jul 2018</small>
+              <span class="badge bg-danger">High</span>
+
+              <h5 class="mt-2 mb-2 text-secondary text-title cursor-pointer">
+                <a>iOS App home page</a>
+              </h5>
+
+              <!-- end card-body -->
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body p-3">
+              <small class="float-end text-muted">18 Jul 2018</small>
+              <span class="badge bg-danger">High</span>
+
+              <h5 class="mt-2 mb-2 text-secondary text-title cursor-pointer">
+                <a>iOS App home page</a>
+              </h5>
+
+              <!-- end card-body -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

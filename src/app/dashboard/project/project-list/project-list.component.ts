@@ -17,6 +17,7 @@ import {
   ProjectService,
 } from 'src/app/core/services/project.service';
 import { MenuItem } from 'src/app/shared/Utils/menu-item';
+import { BreadcrumbItem } from '../../../shared/components/breadcrumb-navbar/breadcrumb-item';
 
 @Component({
   selector: 'app-project-list',
@@ -24,6 +25,17 @@ import { MenuItem } from 'src/app/shared/Utils/menu-item';
   styleUrls: ['./project-list.component.scss'],
 })
 export class ProjectListComponent implements OnInit {
+  readonly breadcrumbItems: BreadcrumbItem[] = [
+    {
+      name: 'Board',
+      link: '/',
+      isActive: true,
+    },
+    {
+      name: 'Projects',
+      isActive: false,
+    },
+  ];
   appData$!: Observable<AppState<Project[]>>;
   readonly DATA_STATE = DataState;
 
