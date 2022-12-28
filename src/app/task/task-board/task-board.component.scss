@@ -1,33 +1,83 @@
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bread-padding {
+  padding: 1.4rem 1.4rem 0.6rem 1.4rem;
+}
+
+.tableFixHead {
+  padding: 0 0 0 1.4rem;
+  overflow: auto;
+  width: 100%;
+}
 .board {
-    display: flex;
-    white-space: nowrap;
-    overflow-x: auto;
-    gap: 1.25rem;
+  display: table;
+  border-spacing: 1rem 0px;
+  margin: 0 -1rem;
 }
 
 .tasks {
-    --ct-gray-200: #eef2f7;
-    width: 22rem;
+  display: table-row;
+
+  &__list-items {
+    display: table-cell;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    background-color: #f4f5f7;
     padding: 0 1rem 1rem 1rem;
-    border: 1px solid var(--ct-gray-200);
-    vertical-align: top;
-    margin-bottom: 1.5rem;
-    border-radius: 0.25rem;
-    
+    width: 22rem;
+    min-width: 280px;
+    // border: 1px solid black;
 
-    &__header {
-        background-color: var(--ct-gray-100);
-        padding: 1rem;
-        margin: 0 -1rem;
+    .card {
+      width: 100%;
+      margin-bottom: 0.8rem;
     }
+  }
+}
 
-    &__list-items {
-        min-height: 100px;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-       
-    }
+.board__column {
+  display: table-header-group;
+}
 
+.board__column-header {
+  display: table-cell;
+  background-color: #f4f5f7;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  padding: 1rem;
+  width: 22rem;
+  position: sticky; /* make the table heads sticky */
+  top: 0px;
+  z-index: 78;
+}
 
+.example-custom-placeholder {
+  border-radius: 0.25rem;
+  background-color: rgba(204, 204, 204, 0.531);
+  border: dashed 2px rgba(153, 153, 153, 0.749);
+  min-height: 120px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+// .cdk-drag-placeholder {
+//   opacity: 0;
+// }
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.tasks__list-items.cdk-drop-list-dragging .card:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }

@@ -19,7 +19,6 @@ body {
   width: 100%;
 }
 
-
 .text-muted {
   color: #98a6ad;
   font-size: 0.8rem;
@@ -44,4 +43,28 @@ body {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.bg-success {
+  --bg-opacity: 1;
+  background-color: rgba(198, 246, 213, var(--bg-opacity)) !important;
+  color: rgba(39, 103, 73) !important;
+}
+
+.bg-warning {
+  --bg-opacity: 1;
+  background-color: rgba(254, 235, 200, var(--bg-opacity)) !important;
+  color: rgba(156, 66, 33) !important;
+}
+
+.bg-danger {
+  --bg-opacity: 1;
+  background-color: rgba(254, 215, 215, var(--bg-opacity)) !important;
+  color: rgba(155, 44, 44) !important;
+}
+
+.bg-info {
+  --bg-opacity: 1;
+  background-color: rgba(195, 218, 254, var(--bg-opacity)) !important;
+  color: rgba(67, 65, 144) !important;
 }
