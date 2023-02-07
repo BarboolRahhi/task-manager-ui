@@ -5,6 +5,7 @@ import { TaskRoutingModule } from './task-routing.module';
 import { TaskBoardComponent } from './task-board/task-board.component';
 import { BreadcrumbNavbarComponent } from '../shared/components/breadcrumb-navbar/breadcrumb-navbar.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [TaskBoardComponent],
@@ -12,6 +13,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     CommonModule,
     TaskRoutingModule,
     BreadcrumbNavbarComponent,
+    SharedModule,
     DragDropModule,
   ],
 })

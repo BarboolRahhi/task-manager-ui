@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class TaskService {
   private taskSubject = new BehaviorSubject<Task[]>([]);
-  private tasks$ = this.taskSubject.asObservable();
+  tasks$ = this.taskSubject.asObservable();
   constructor(private http: HttpClient) {}
 
   tasksInTodo$ = this.tasks$.pipe(

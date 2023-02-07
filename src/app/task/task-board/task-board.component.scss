@@ -4,8 +4,27 @@
   flex-direction: column;
 }
 
+.form-control {
+  max-width: 25rem;
+  border: 0;
+  background-color: #f1f3fa;
+}
+
+.input-group-text {
+  border: 0;
+  background-color: #f1f3fa !important;
+}
+
+.icon {
+  font-size: 1.3rem;
+}
+
 .bread-padding {
-  padding: 1.4rem 1.4rem 0.6rem 1.4rem;
+  padding: 1.4rem 1.4rem 0rem 1.4rem;
+}
+
+.toolbar {
+  padding: 0 1.4rem 1.4rem 1.4rem;
 }
 
 .tableFixHead {

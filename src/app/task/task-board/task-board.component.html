@@ -1,14 +1,57 @@
 <rb-breadcrumb-navbar
   class="bread-padding"
-  title="Tasks"
+  title="Tasks Board"
   [breadcrumbItems]="breadcrumbItems"
 ></rb-breadcrumb-navbar>
 
-<!-- <div class="row">
-  <div class="col-12">
-  
+<div class="row mt-2 align-items-center justify-content-center toolbar">
+  <div class="col-md-6 d-flex justify-content-md-start justify-content-center">
+    <app-button
+      data-bs-toggle="modal"
+      data-bs-target="#projectModal"
+      color="secondary"
+    >
+      <i class="bx bx-plus me-1" style="font-size: 1.4rem"></i> Add Task
+    </app-button>
   </div>
-</div> -->
+  <div
+    class="col-md-6 mt-3 mt-md-0 d-flex justify-content-md-end justify-content-center"
+  >
+    <div class="input-group me-2">
+      <input
+        class="form-control border-right-0"
+        type="search"
+        placeholder="Search..."
+        aria-label="Search"
+      />
+      <span class="input-group-text bg-transparent">
+        <i class="bx bx-search-alt-2 icon text-secondary"></i>
+      </span>
+    </div>
+    <app-button #all color="primary" (click)="onAllHandler()">All</app-button>
+    <div class="btn-group ms-2" role="group" aria-label="Basic example">
+      <!-- <button
+        #ongoing
+        type="button"
+        class="btn btn-light"
+        (click)="onOngoingHandler()"
+      >
+        Ongoing
+      </button> -->
+
+      <button
+        #finished
+        type="button"
+        class="btn btn-light"
+        (click)="onFinishedHandler()"
+      >
+        <i class="bx bx-filter"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- task board -->
 <div class="tableFixHead">
   <div class="board">
     <!-- DONE -->
@@ -26,7 +69,7 @@
             'bg-info': boardColumn.id === 'inprogress'
           }"
         >
-          3
+          {{ boardColumn.itemCount }}
         </div>
       </h5>
     </div>
@@ -78,3 +121,4 @@
     <!-- IN Progress END -->
   </div>
 </div>
+<!-- task board end -->

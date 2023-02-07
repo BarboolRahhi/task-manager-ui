@@ -9,10 +9,10 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule, RouterModule],
   template: `
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col col-md-6">
         <h4 class="text-secondary">{{ title }}</h4>
       </div>
-      <div class="col-md-6 d-flex justify-content-end subtitle-font-size">
+      <div class="col col-md-6 d-flex justify-content-end subtitle-font-size">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li

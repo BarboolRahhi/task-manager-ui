@@ -11,6 +11,7 @@ import { Task } from '../../core/models/task';
 interface BoardColumn<T> {
   id: string;
   name: string;
+  itemCount: number;
   data: T[];
 }
 
@@ -36,16 +37,19 @@ export class TaskBoardComponent implements OnInit {
     {
       id: 'todo',
       name: 'Todo',
+      itemCount: 0,
       data: [],
     },
     {
       id: 'inprogress',
       name: 'In Progress',
+      itemCount: 0,
       data: [],
     },
     {
       id: 'done',
       name: 'Done',
+      itemCount: 0,
       data: [],
     },
   ];
@@ -58,10 +62,12 @@ export class TaskBoardComponent implements OnInit {
 
   ngOnInit() {
     this.taskService.getTasks();
+    //this.taskService.tasks$.subscribe((tasks) => {});
     this.taskService.tasksInTodo$.subscribe((tasks) => {
       const col = this.boardColums.find((col) => col.name === 'Todo');
       if (col) {
         col.data = tasks;
+        col.itemCount = tasks.length;
       }
     });
 
@@ -69,6 +75,7 @@ export class TaskBoardComponent implements OnInit {
       const col = this.boardColums.find((col) => col.name === 'In Progress');
       if (col) {
         col.data = tasks;
+        col.itemCount = tasks.length;
       }
     });
 
@@ -76,6 +83,7 @@ export class TaskBoardComponent implements OnInit {
       const col = this.boardColums.find((col) => col.name === 'Done');
       if (col) {
         col.data = tasks;
+        col.itemCount = tasks.length;
       }
     });
   }
@@ -123,6 +131,16 @@ export class TaskBoardComponent implements OnInit {
         }
       }
     }
+  }
+
+  onAllHandler() {
+    throw new Error('Method not implemented.');
+  }
+  onFinishedHandler() {
+    throw new Error('Method not implemented.');
+  }
+  onOngoingHandler() {
+    throw new Error('Method not implemented.');
   }
 
   // dropItemProgress(event: CdkDragDrop<Task>) {
